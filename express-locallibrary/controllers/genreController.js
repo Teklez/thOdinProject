@@ -28,7 +28,7 @@ exports.genre_delete_get = asyncHandler(async (req, res, next) => {
 });
 
 // Handle Genre delte on POST.
-exports.genre_delte_post = asyncHandler(async (req, res, next) =>{
+exports.genre_delete_post = asyncHandler(async (req, res, next) =>{
     res.send("NOT IMPLEMENTED: Genre delete POST");
 });
 
