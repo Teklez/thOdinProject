@@ -1,5 +1,5 @@
 const Book = require("../models/book");
-const BookInstance = require("../models/book");
+const BookInstance = require("../models/bookinstance");
 const Genre = require("../models/genre");
 const Author = require("../models/author");
 const asyncHandler = require("express-async-handler");
