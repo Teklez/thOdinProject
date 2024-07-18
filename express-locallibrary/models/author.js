@@ -20,7 +20,7 @@ AuthorSchema.virtual("name").get(function(){
     }
 
     return fullname;
-})
+});
 
 // Virtual for author's URL
 

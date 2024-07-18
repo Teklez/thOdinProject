@@ -4,7 +4,9 @@ const asyncHandler = require('express-async-handler');
 
 // Display list of all Authors.
 exports.author_list = asyncHandler(async(req, res, next) => {
-    res.send("NOT IMPLEMEMENTED: Author list");
+    const authorList = await Author.find().exec();
+
+    res.render('author_list', {title:"Author List", author_list:authorList});
 });
 
 // Display detail page for a specific Author.
@@ -19,7 +21,7 @@ exports.author_create_get = asyncHandler(async (req, res, next) =>{
 
 // Handle Author create on POST
 exports.author_create_post = asyncHandler(async (req, res, next) => {
-    res.sent('NOT IMPLEMENTED:Author craete POST');
+    res.send('NOT IMPLEMENTED:Author craete POST');
 });
 
 // Display Author delete form on GET
