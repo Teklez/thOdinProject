@@ -1,13 +1,17 @@
-extend layout
-block content
-    h1 Genre: #{genre.name}
+extends layout
 
-    div(style='margin-left:20px;margin-top:20px')
+block content
+
+  h1 Genre: #{genre.name}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h2(style='font-size: 1.5rem;') Books
     if genre_books.length
-        dl
-            each book in genre_books
-                dt
-                    a(href=book.url) #{book.title}
-                dd #{book.summary}
+      dl
+        each book in genre_books
+          dt
+            a(href=book.url) #{book.title}
+          dd #{book.summary}
     else
-        p This genre has no books.
+      p This genre has no books.
