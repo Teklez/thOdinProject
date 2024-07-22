@@ -8,10 +8,29 @@ require('dotenv').config();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const catalogRouter = require("./routes/catalog");
-const mongoDB = process.env.db;
+const mongoDB = process.env.db || "mongodb+srv://zemen:getup@locallibrary.68332le.mongodb.net/?retryWrites=true&w=majority&appName=local_library";
+const compression = require("compression");
+const helmet = require("helmet");
+const RateLimit = require("express-rate-limit");
 
-
+//Set up rate limiter: maximum of twenty requests per minute;
 var app = express();
+const limiter = RateLimit({
+  windowMs:1 * 60 * 1000, // 1 minute
+  max:20,
+})
+
+app.use(limiter);
+
+// Add helmet to the middleware chain.
+// Set CSP headers to allow our Bootstrap and Jquery to b served.
+app.use(
+  helmet.contentSecurityPolicy({
+    directives:{
+      "script-src":["'self'","code.jquery.com","cdn.jsdelivr.net"],
+    },
+  }),
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,7 +44,7 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
-
+app.use(compression());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
