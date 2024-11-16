@@ -9,6 +9,6 @@ services:
       - key: DB_SECRET
         value: postgres://username:password@hostname:port/dbname
       - key: SECRET
-        value: <your_secret_key>
+        value:"mamaaintraisenopunk"
       - key: MEMBER
         value: false
