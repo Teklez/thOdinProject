@@ -36,17 +36,6 @@ Built using **Node.js**, **Express.js**, **Passport.js**, and **PostgreSQL**, th
     npm run dev
 Open the app in your browser at http://localhost:3000.
 
-## Features
-
-- **Sign Up & Login**: Users can register and log in using Passport.js for secure authentication.
-- **Membership**: Users can enter a secret passcode to gain membership status.
-- **Role-Based Access**:
-  - **Regular users**: Can see messages but not authors or timestamps.
-  - **Members**: Can see authors and timestamps.
-  - **Admins**: Can delete messages.
-- **Message Management**: Users can create messages with a title, timestamp, and content.
-- **Admin Control**: Admin users can delete messages via a dedicated button.
-
 
 Enjoy exploring the **Members Only Club**! 🎉
 
