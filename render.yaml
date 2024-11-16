@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: members_only
+    env: node
+    buildCommand: npm install
+    startCommand: npm run dev
+    plan: free
+    envVars:
+      - key: DB_SECRET
+        value: postgres://username:password@hostname:port/dbname
+      - key: SECRET
+        value: <your_secret_key>
+      - key: MEMBER
+        value: false
