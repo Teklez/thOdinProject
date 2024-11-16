@@ -1,4 +1,4 @@
-# Members Only Club
+# Members Only
 
 ## Overview
 Members Only Club is a messaging app where users can sign up, log in, and create messages. The app includes role-based access:
@@ -20,7 +20,7 @@ Built using **Node.js**, **Express.js**, **Passport.js**, and **PostgreSQL**, th
 1. Clone the repository:
    ```bash
    git clone https://github.com/Teklez/thOdinProject/edit/members_only
-   cd members-only-club
+   cd members_only
    npm install
 2. Install the dependencie
    ```bash
@@ -28,8 +28,9 @@ Built using **Node.js**, **Express.js**, **Passport.js**, and **PostgreSQL**, th
 
 3. Set up your .env file with the required environment variables
    ``` bash
-    DATABASE_URL=your_postgresql_connection_string
-    SECRET=your_secret_key
+   DB_PASSWORD=database_password
+   MEMBER=false
+   SESSION_SECRET=your_sercrete
 4. Start the server
    ``` bash
     npm run dev
