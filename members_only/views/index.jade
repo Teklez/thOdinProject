@@ -1,0 +1,65 @@
+extends layout
+
+block content
+  nav(class="navbar")
+    h1(class="mo") Members Only
+    div(class="search")
+      input(type="text", placeholder="Search" class="search-input")
+    ul(class="nav")
+      li
+
+      if !locals.user
+        li
+          div(class="btn")
+            a(href="/auth/register") Register
+        li
+          div(class="btn")
+            a(href="/auth/login") Login
+      else
+        if !locals.user.member  
+          div(class="btn")
+            a(href="/users/become_member") Become Member
+        if locals.user.member
+          form(method="POST", action="/users/not_member" class="btn-form") 
+            button(type="submit" class="submit-btn") End Membership
+        if locals.user.member
+          div(class="btn")
+            a(href="/users/add_message") Add Message
+        div(class="btn")
+          a(href="/auth/log-out") Logout
+          
+      
+  div(class="messages-container")
+    if !locals.user
+      h1 Log in and become a member to see add your own messages and see who wrote other messages
+
+      ul(class="messages")
+        each message in messages
+          li(class="message-card")
+            if user && user.member
+              h2(class="title")= message.title
+            p(class="message-text") #{message.message}
+            if user && user.member
+              p(class="author") Written by #{message.firstname} #(message.lastname)
+              p(timestamp)  #{message.timestamp}
+            if user && user.is_admin
+              form(method="POST", action="/messages/#{message._id}/delete")
+                button(type="submit" class="submit-btn") Delete
+    else
+      if !user.member
+        h1 Become a member to add your own messages and see who wrote other messages  
+      if user.member
+        h1 No secret between members
+
+      ul(class="messages")
+        each message in messages
+          li(class="message-card")
+            if user && user.member
+              h2(class="title")= message.title
+            p(class="message-text") #{message.message}
+            if user && user.member
+              p(class="author") Written by #{message.firstname} #{message.lastname}
+              p(class="timestamp") #{message.timestamp}
+            if user && user.is_admin
+              form(method="POST", action="/users/messages/#{message.id}/delete")
+                button(type="submit" class="submit-btn") Delete

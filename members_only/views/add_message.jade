@@ -1,0 +1,15 @@
+extends layout
+
+block content
+        form(action="/users/add_message" method="POST")
+            div(class="register")
+                h1 Add Message
+
+                div(class="register-input-container")
+                    label(for="title") Title
+                    input(type="text" id="title" name="title" required class="register-input")
+                div(class="register-input-container")
+                    label(for="message") Message
+                    textarea(type="text" id="message" name="message" required class="register-input text-area")
+                div
+                    button(type="submit" class="submit-btn") Add

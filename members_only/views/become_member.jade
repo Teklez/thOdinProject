@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    
+    form(action="/users/become_member" method="POST")
+        div(class="become-member")
+            h1 Enter the secret code to become a member
+            input(type="text" id="passcode" name="passcode" required class="passcode-input")
+            
+            div
+                button(type="submit" class="submit-btn") Bember
