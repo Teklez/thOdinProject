@@ -83,18 +83,21 @@ router.post(
         if (err) {
           return err;
         }
+        
+        const is_admin = req.body.admin? true : false;
 
         await pool.query(
-          "INSERT INTO users (firstname, lastname, username, member, password) VALUES ($1, $2, $3, $4, $5)",
+          "INSERT INTO users (firstname, lastname, username, member, password, is_admin) VALUES ($1, $2, $3, $4, $5, $6)",
           [
             req.body.firstname,
             req.body.lastname,
             req.body.username,
             process.env.MEMBER,
             hashedPassword,
+            is_admin,
           ]
         );
-        res.redirect("/");
+        res.redirect("/auth/login");
       });
     } catch (err) {
       return err;

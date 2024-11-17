@@ -39,10 +39,10 @@ block content
             if user && user.member
               h2(class="title")= message.title
             p(class="message-text") #{message.message}
-            if user && user.member
+            if user.member || user.is_admin
               p(class="author") Written by #{message.firstname} #(message.lastname)
               p(timestamp)  #{message.timestamp}
-            if user && user.is_admin
+            if user.is_admin || user.is_admin
               form(method="POST", action="/messages/#{message._id}/delete")
                 button(type="submit" class="submit-btn") Delete
     else
@@ -54,10 +54,10 @@ block content
       ul(class="messages")
         each message in messages
           li(class="message-card")
-            if user && user.member
+            if user.member || user.is_admin
               h2(class="title")= message.title
             p(class="message-text") #{message.message}
-            if user && user.member
+            if user.member || user.is_admin
               p(class="author") Written by #{message.firstname} #{message.lastname}
               p(class="timestamp") #{message.timestamp}
             if user && user.is_admin

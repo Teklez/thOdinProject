@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      DATABASE_HOST: ep-calm-boat-a2kf09g2.eu-central-1.pg.koyeb.app
+      DATABASE_USER: zemen
+      DATABASE_PASSWORD: cSOkA2CwD0jh
+      DATABASE_NAME: odin
+    command: ["npm", "start"]
+  
